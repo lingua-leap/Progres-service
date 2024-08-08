@@ -6,10 +6,10 @@ import (
 )
 
 type Storage interface {
-	NewProgressStorage() Progress
+	NewMongoStorage() Mongodb
 }
 
-func NewMongoStorage(db *mongo.Database) Storage {
+func NewStorage(db *mongo.Database) Storage {
 	return &StorageImpl{db}
 }
 
@@ -17,6 +17,6 @@ type StorageImpl struct {
 	db *mongo.Database
 }
 
-func (s *StorageImpl) NewProgressStorage() Progress {
+func (s *StorageImpl) NewMongoStorage() Mongodb {
 	return mongodb.NewProgressRepo(s.db.Collection("progress"))
 }

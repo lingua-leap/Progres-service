@@ -4,7 +4,7 @@ import (
 	pb "progress-service/generated/progress"
 )
 
-type Progress interface {
+type Mongodb interface {
 	GetUserProgress(in *pb.LCodeUID) (*pb.GetUserProgressResponse, error)
 	GetDailyProgress(in *pb.UserID) (*pb.GetDailyProgressResponse, error)
 	GetWeeklyProgress(in *pb.UserID) (*pb.GetWeeklyProgressResponse, error)
